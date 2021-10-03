@@ -1,4 +1,5 @@
-export default {
+import {WebhookHandler} from 'speedybot'
+const handler: WebhookHandler = {
     keyword: '<@webhook>',
     route: '/my_test_webhook',
     handler(req, res) {
@@ -35,6 +36,7 @@ export default {
         this.send({toPersonEmail: targetEmail, text: msg})
         this.sendCardToPerson(targetEmail, cardJson)
 
-        res.send('Thanks') // optional, in case server needs acknowledgement
+        res.status(200).send('Thanks') // optional, in case server needs acknowledgement
     }
 }
+export default handler

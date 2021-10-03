@@ -28,13 +28,13 @@ npm run setup
 | **Command** | **Desc** |
 | --- | --- |
 | ```npm run setup``` | Setup dependency and bundle |
+| ```npm run dev``` | Start with live-reload on code-changes |
+| ```npm run ui``` | Boot web-based debug panel | 
 | ```npm start``` | Start chat agent |
 | ```npm start:server``` | Start server (you'll need to set ```webhookUrl``` in settings/config.json) |
-| ```npm run dev``` | Start with live-reload on code-changes |
 
 
 Get a **[new](https://developer.webex.com/my-apps/new/bot)** or **[existing](https://developer.webex.com/my-apps)** token and save to **[config.json](./settings/config.json)**
-
 
 
 <details><summary>Information for booting with a server</summary>
@@ -167,9 +167,3 @@ export default [{
     }
 ]
 ```
-
-
-
-
-
-![image](https://raw.githubusercontent.com/valgaze/speedybot/master/docs/assets/healthcheck.gif)
