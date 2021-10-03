@@ -58,7 +58,7 @@ const handlers: BotHandler[] = [
 		},
 		helpText: `A special handler that fires anytime a user submits data (you can only trigger this handler by tapping Submit in a card)`
 	},
-	Namegamehandler, // You can also include single-file handlers in your list
+	Namegamehandler, // You can also include single-file handlers in your list,
 ]
 
 export default handlers;

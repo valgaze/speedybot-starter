@@ -8,6 +8,13 @@ Starter repo for **[speedybot](https://www.npmjs.com/package/speedybot)**,
 
 ---
 
+## Video Instructions
+
+- 101: https://share.descript.com/view/ds3UA1kUb9z
+
+
+- Webhooks/3rd-party integrations: https://share.descript.com/view/bnyupJvNJcx
+
 
 ## Setup
 
