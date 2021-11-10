@@ -1,4 +1,4 @@
-import { BotHandler } from 'speedybot'
+import { BotHandler, $ } from 'speedybot'
 import Namegamehandler from './namegame'
 
 /**
@@ -19,21 +19,26 @@ import Namegamehandler from './namegame'
  */
 const handlers: BotHandler[] = [
 	{
-		keyword: ['hello', 'hey', 'yo', 'watsup', 'hola'],
+		keyword: ['hi', 'hello', 'hey', 'yo', 'watsup', 'hola'],
 		handler(bot, trigger) {
-			const reply = `Heya how's it going ${trigger.person.displayName}?`
-			bot.say(reply)
+			const utterances = [`Heya how's it going $[name]?`,
+								`Hi there, $[name]!`,
+								`Hiya $[name]`]
+			const template = {name: trigger.person.displayName}
+			$(bot).sendTemplate(utterances, template)
 		},
 		helpText: `A handler that greets the user`
 	},
 	{
 		keyword: ['sendfile'],
 		handler(bot, trigger) {
-			const fileUrl = 'https://camo.githubusercontent.com/b846bfa57dd26af4e1526abe1173e0b332b75af5d642564b2ab1d0c12a482290/68747470733a2f2f692e696d6775722e636f6d2f56516f5866486e2e676966'
-			// Send a DM w/ markdown
-			bot.dm(trigger.person.id, 'markdown', 'Sending you a **file**');
-			// Send a file by URL
-			bot.dm(trigger.person.id, { file: fileUrl })
+			const $bot = $(bot)
+			// Send a publically accessible URL file
+			// Supported filetypes: ['doc', 'docx' , 'xls', 'xlsx', 'ppt', 'pptx', 'pdf', 'jpg', 'jpeg', 'bmp', 'gif', 'png']
+			const pdf = 'https://speedybot.valgaze.com'
+
+			$bot.sendDataFromUrl(pdf)
+
 		},
 		helpText: `A handler that attaches a file in a direct message`
 	},
@@ -57,6 +62,28 @@ const handlers: BotHandler[] = [
 
 		},
 		helpText: `A special handler that fires anytime a user submits data (you can only trigger this handler by tapping Submit in a card)`
+	},
+	{
+		keyword: '<@fileupload>',
+		async handler(bot, trigger) {
+			const supportedFiles = ['json', 'txt', 'csv']
+
+            // take 1st file uploaded, note this is just a URL & not authenticated
+            const [file] = trigger.message.files
+
+            // Retrieve file data
+			const fileData = await $(bot).getFile(file)
+			const { extension, type } = fileData
+
+            if (supportedFiles.includes(extension)) {
+                const {data} = fileData
+                // bot.snippet will format json or text data into markdown format
+                bot.say({markdown: $(bot).snippet(data)})
+            } else {
+                bot.say(`Sorry, somebody needs to add support to handle *.${extension} (${type}) files`)
+            }
+		},
+		helpText: 'A special handler that will activate whenever a file is uploaded'
 	},
 	Namegamehandler, // You can also include single-file handlers in your list,
 ]

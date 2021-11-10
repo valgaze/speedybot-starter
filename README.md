@@ -25,6 +25,9 @@ npm run setup
 # add your token to settings/config.json and launch with $ npm start
 ```
 
+- See here for how to add **[$uperpowers](https://github.com/valgaze/speedybot/blob/master/docs/superpowers.md)** to give your bot extra capabilities (get/set conversational contexts, store data, retrieve files, 3rdparty integrations, etc)
+
+
 | **Command** | **Desc** |
 | --- | --- |
 | ```npm run setup``` | Setup dependency and bundle |
