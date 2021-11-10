@@ -37,6 +37,8 @@ To make sure all is well, add your bot from Step 1 in a 1-1 chat session and tel
 
 - [ ] From here, you can edit **settings/handlers.ts** and make your own handlers (& integrate with other services)
 
+- [ ] See how to use **[$uperpowers](https://github.com/valgaze/speedybot/blob/master/docs/superpowers.md)** to give your bot extra capabilities (get/set conversational contexts, store data, retrieve files, 3rdparty integrations, etc)
+
 - [ ] Use the How-To doc to see how to use **["special words"](https://github.com/valgaze/speedybot/blob/master/docs/how-to.md#special-words)** to intercept file-uploads/attachments, submit data from a card, etc
 
 - [ ] Look into Adaptive Cards and other rich chat components: https://developer.webex.com/docs/api/guides/cards
