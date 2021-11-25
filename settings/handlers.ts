@@ -26,6 +26,7 @@ const handlers: BotHandler[] = [
 								`Hiya $[name]`]
 			const template = {name: trigger.person.displayName}
 			$(bot).sendTemplate(utterances, template)
+			$(bot).$trigger('chips', trigger)
 		},
 		helpText: `A handler that greets the user`
 	},
@@ -62,6 +63,28 @@ const handlers: BotHandler[] = [
 
 		},
 		helpText: `A special handler that fires anytime a user submits data (you can only trigger this handler by tapping Submit in a card)`
+	},
+	{
+		keyword: 'chips',
+		async handler(bot) {
+			const $bot = $(bot)
+
+			// Set chips to disappear after tap
+			$bot.setChipsConfig({disappearOnTap: true})
+
+			// Send chip with custom handler
+			const customChip = { 
+				label: 'custom chip', 
+				handler(bot, trigger) {
+					$bot.sendSnippet(trigger, `**The 'custom chip' was tapped**	`)
+					$bot.$trigger('chips', trigger) // re-render chips
+				}
+			}
+
+			// Add optional title
+			$bot.sendChips(['hey', 'ping', 'pong', customChip], 'These chips will disappear on tap')
+		},
+		helpText: 'Returns a sample list of "chips"'
 	},
 	{
 		keyword: '<@fileupload>',
