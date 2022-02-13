@@ -43,7 +43,7 @@
         "cli-ux": "^5.6.3",
         "express": "^4.17.1",
         "node-static": "^0.7.11",
-        "speedybot": "^1.0.16",
+        "speedybot": "^1.0.17",
         "webex-node-bot-framework": "^2.3.7"
     }
 }
