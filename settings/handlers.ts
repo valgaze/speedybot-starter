@@ -167,6 +167,17 @@ const handlers: BotHandler[] = [
 		helpText: 'A special handler that will activate whenever a file is uploaded'
 	},
 	{
+		keyword: 'counter',
+		async handler(bot) {
+			const $bot = $(bot)
+			await $bot.increaseCounter('myCounter')
+			const counterRef = await $bot.getCounter('myCounter')
+			bot.say(`The current count is ${counterRef}`)
+
+		},
+		helpText: 'Will increment a counter (scoped to current user) each time the handler is invoked'
+	},
+	{
 		keyword: '<@nomatch>',
 		handler(bot, trigger) {
 			const $bot = $(bot)
