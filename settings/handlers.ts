@@ -172,7 +172,7 @@ const handlers: BotHandler[] = [
 			const $bot = $(bot)
 			await $bot.increaseCounter('myCounter')
 			const counterRef = await $bot.getCounter('myCounter')
-			bot.say(`The current count is ${counterRef}`)
+			$bot.thread(['Counter was increased', `The current count is ${counterRef}`])
 
 		},
 		helpText: 'Will increment a counter (scoped to current user) each time the handler is invoked'
